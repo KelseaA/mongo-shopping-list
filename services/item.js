@@ -18,10 +18,10 @@ exports.list = function(callback, errback) {
         }
         callback(items);
     });
-};
+}; 
 
 exports.remove = function (id, callback, errback) {
-  Item.findOneAndRemove({ id: id }, function(err, item) {
+  Item.findByIdAndRemove(id, function(err, item) {
     if (err) {
       errback(err);
       return;
@@ -32,7 +32,7 @@ exports.remove = function (id, callback, errback) {
 
 exports.update = function (id, newName, callback, errback) {
   var options = { new: true };
-  Item.findOneAndUpdate({ id: id }, { name: newName }, options, function(err, item) {
+  Item.findByIdAndUpdate(id, { name: newName }, options, function(err, item) {
     if (err) {
       errback(err);
       return;
