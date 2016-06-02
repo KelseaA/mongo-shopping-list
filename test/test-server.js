@@ -87,12 +87,13 @@ describe('Shopping List', function() {
 
       chai.request(app)
         .delete('/items/' + items[0]._id)
-        .end(function(err, res) {
-        res.should.have.status(200);
-        res.should.be.json;
-        res.body.should.be.a('object');
-        res.body.should.have.property('name');
-        res.body.message.should.be.a('string');
+        .end(function(err, response) {
+        console.log(err);
+        response.should.have.status(200);
+        response.should.be.json;
+        response.body.should.be.a('object');
+        response.body.should.have.property('name');
+        response.body.message.should.be.a('string');
         storage.items.should.be.a('array');
         done();
       });
