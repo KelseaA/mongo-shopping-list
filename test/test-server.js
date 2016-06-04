@@ -88,7 +88,6 @@ describe('Shopping List', function() {
       chai.request(app)
         .delete('/items/' + items[0]._id)
         .end(function(err, response) {
-        console.log(err);
         response.should.have.status(200);
         response.should.be.json;
         response.body.should.be.a('object');
