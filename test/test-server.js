@@ -14,8 +14,8 @@ chai.use(chaiHttp);
 describe('Shopping List', function() {
   before(function(done) {
     seed.run(function() {
-      done();
     });
+    done();
   });
 
   it('should list items on GET', function(done) {
@@ -31,8 +31,8 @@ describe('Shopping List', function() {
       res.body[res.body.length - 3].name.should.equal('Broad beans');
       res.body[res.body.length - 2].name.should.equal('Tomatoes');
       res.body[res.body.length - 1].name.should.equal('Peppers');
-      done();
     });
+      done();
   });
 
   it('should edit an item on POST', function(done) {
@@ -51,9 +51,9 @@ describe('Shopping List', function() {
         res.body.should.have.property('name');
         res.body.name.should.be.a('string');
         res.body.name.should.equal('Kale');
-        done();
       });
     });
+      done();
   });
 
   it('should edit an item on PUT', function(done) {
@@ -72,9 +72,9 @@ describe('Shopping List', function() {
         res.body.should.have.property('name');
         res.body.name.should.be.a('string');
         res.body.name.should.equal('Milk');
-        done();
       });
     });
+      done();
   });
 
   it('should delete an item on DELETE', function(done) {
@@ -91,9 +91,9 @@ describe('Shopping List', function() {
         response.should.be.json;
         response.body.should.be.a('object');
         response.body.should.have.property('name');
-        done();
       });
     });
+      done();
   });
  
    after(function(done) {
