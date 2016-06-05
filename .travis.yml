@@ -8,3 +8,10 @@ addons:
     - mongodb-3.2-precise
     packages:
     - mongodb-org-server
+deploy:
+  provider: heroku
+  api_key:
+    secure: lWLYspdI5hXOJjDwh1/w6K6U4+e7OpgOes0eQqPmQ8coNJ/YnWhlCawsQRndUJgeH3jRG8PLwKarLboNBCkbhUwovOuw810vHvZ8Fz5oW7nVCkJ8F3KeQJqatmNFPSQfn3WIK7brYxoBxYKfrm3nzmsTcEXZdd4AbYBQzHFKXXkFFO9i5ypIx3uCStIK/K3WqOrlbdZE3rkIibuRqbX5CgfaBZHxn/N2UWt2mOVtGduDuJo+YDeqmpAl+dajx4ZNybx4vJaqmimgsvVNcXVHI2gZKU+fQ54MheJREQ4HYH9MmeLVVBEZgrz/Au5Xt8ReDKm/G5qYm1wDCoCsdyBv7/7/cUfSCKjWz5jDeG3yVeUUeNTPOcJBRaL4rG4pjP4xb/i9C3W/+6adICpSHHM2u+uhffdgsZILQ3Jw9fvUrtn/X/YOpLgo7zkLz5zIANpxop8aRFSWuD5o0teTiorSsetvuXyoxwLQ8n+XjGGRnzKqLoBMkk51XVrPOjq8pZuafAXPTqv3Ni8TnxYQnzuncBa5T8lXpbKTJON8wpx7XgMpJn+3GHHYM15/e/cYcgBZ8u9pvafK5SZ1Cczz5i4nKqoBOtYBX2m9e0HAfn66113LcU7q3a1zE3jszvyWu8K0Qq5x6c108TdEFa3enGocKsamKIl/LSID6Vf049+czRI=
+  app: guarded-reaches-62166
+  on:
+    repo: KelseaA/mongo-shopping-list
