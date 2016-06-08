@@ -14,14 +14,14 @@ chai.use(chaiHttp);
 describe('Shopping List', function() {
   before(function(done) {
     seed.run(function() {
+      done();
     });
-    done();
   });
 
   it('should list items on GET', function(done) {
     chai.request(app)
-      .get('/items')
-      .end(function(err, res) {
+    .get('/items')
+    .end(function(err, res) {
       res.should.have.status(200);
       res.should.be.json;
       res.body.should.be.a('array');
@@ -31,75 +31,74 @@ describe('Shopping List', function() {
       res.body[res.body.length - 3].name.should.equal('Broad beans');
       res.body[res.body.length - 2].name.should.equal('Tomatoes');
       res.body[res.body.length - 1].name.should.equal('Peppers');
-    });
       done();
+    });
   });
 
   it('should edit an item on POST', function(done) {
     chai.request(app)
-      .get('/items')
-      .end(function(err, res) {
+    .get('/items')
+    .end(function(err, res) {
       var items = res.body;
 
       chai.request(app)
-        .post('/items/')
-        .send({name: 'Kale'})
-        .end(function(err, res) {
+      .post('/items/')
+      .send({name: 'Kale'})
+      .end(function(err, res) {
         res.should.have.status(201);
         res.should.be.json;
         res.body.should.be.a('object');
         res.body.should.have.property('name');
         res.body.name.should.be.a('string');
         res.body.name.should.equal('Kale');
+        done();
       });
     });
-      done();
   });
 
   it('should edit an item on PUT', function(done) {
     chai.request(app)
-      .get('/items')
-      .end(function(err, res) {
+    .get('/items')
+    .end(function(err, res) {
       var items = res.body;
 
       chai.request(app)
-        .put('/items/' + items[0]._id)
-        .send({name: 'Milk'})
-        .end(function(err, res) {
+      .put('/items/' + items[0]._id)
+      .send({name: 'Milk'})
+      .end(function(err, res) {
         res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('object');
         res.body.should.have.property('name');
         res.body.name.should.be.a('string');
         res.body.name.should.equal('Milk');
+        done();
       });
     });
-      done();
   });
 
   it('should delete an item on DELETE', function(done) {
     chai.request(app)
-      .get('/items')
-      .end(function(err, res) {
+    .get('/items')
+    .end(function(err, res) {
       var items = res.body;
       var itemName = items[0].name;
 
       chai.request(app)
-        .delete('/items/' + items[0]._id)
-        .end(function(err, response) {
+      .delete('/items/' + items[0]._id)
+      .end(function(err, response) {
         response.should.have.status(200);
         response.should.be.json;
-        console.log(response.body);
         response.body.should.be.a('object');
         response.body.should.have.property('name');
+        done();
       });
     });
-      done();
   });
- 
-   after(function(done) {
+
+  after(function(done) {
     Item.remove(function() {
-      done();
     });
+    done();
   });
 });
